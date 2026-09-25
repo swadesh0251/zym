@@ -1,0 +1,6 @@
+{
+  "name": "KINETIX Athletic Club",
+  "description": "High-performance training facility with elite equipment, live booking, strength metrics calculators, and recovery lab.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
