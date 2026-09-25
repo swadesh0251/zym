@@ -24,28 +24,30 @@ export const FacilityTour: React.FC = () => {
           </p>
         </div>
 
-        {/* Interactive Zone Filter Tabs */}
-        <div className="mt-8 flex flex-wrap gap-2 p-1.5 bg-[#12151c] rounded-lg border border-neutral-800/80">
-          {FACILITY_ZONES.map((zone) => (
-            <button
-              key={zone.id}
-              onClick={() => setActiveZoneId(zone.id)}
-              className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-all whitespace-nowrap cursor-pointer ${
-                activeZoneId === zone.id
-                  ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
-                  : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40'
-              }`}
-            >
-              {zone.name.split('&')[0].trim()}
-            </button>
-          ))}
+        {/* Interactive Zone Filter Tabs - horizontally scrollable on mobile */}
+        <div className="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto scrollbar-none pb-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 bg-[#12151c] rounded-lg border border-neutral-800/80 min-w-max">
+            {FACILITY_ZONES.map((zone) => (
+              <button
+                key={zone.id}
+                onClick={() => setActiveZoneId(zone.id)}
+                className={`px-3.5 sm:px-4 py-2.5 sm:py-2 min-h-[42px] text-xs sm:text-sm font-semibold rounded-md transition-all whitespace-nowrap cursor-pointer ${
+                  activeZoneId === zone.id
+                    ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
+                    : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40'
+                }`}
+              >
+                {zone.name.split('&')[0].trim()}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Active Zone Spotlight Card */}
-        <div className="mt-8 bg-[#10131a] rounded-xl border border-neutral-800 overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-0">
+        <div className="mt-6 sm:mt-8 bg-[#10131a] rounded-xl border border-neutral-800 overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-0">
           
           {/* Visual Showcase (7 cols) */}
-          <div className="lg:col-span-7 relative min-h-[340px] sm:min-h-[440px] bg-neutral-950 overflow-hidden">
+          <div className="lg:col-span-7 relative min-h-[260px] xs:min-h-[320px] sm:min-h-[440px] bg-neutral-950 overflow-hidden">
             <img
               src={activeZone.image}
               alt={activeZone.name}
@@ -56,13 +58,13 @@ export const FacilityTour: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#10131a] via-transparent to-transparent opacity-90 lg:opacity-60" />
             
             {/* Zone spec label */}
-            <div className="absolute top-5 left-5 bg-black/75 backdrop-blur-md px-3.5 py-1.5 rounded border border-neutral-700/60 text-xs font-mono font-medium text-neutral-200">
+            <div className="absolute top-4 sm:top-5 left-4 sm:left-5 bg-black/80 backdrop-blur-md px-3 py-1 sm:py-1.5 rounded border border-neutral-700/60 text-[11px] sm:text-xs font-mono font-medium text-neutral-200">
               {activeZone.specTag}
             </div>
 
-            <div className="absolute bottom-5 left-5 right-5 lg:hidden">
+            <div className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 right-4 sm:right-5 lg:hidden">
               <span className="font-mono text-xs text-[#ccff00] font-semibold">{activeZone.sqft}</span>
-              <h3 className="font-display text-xl font-bold text-white mt-1">{activeZone.name}</h3>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white mt-0.5">{activeZone.name}</h3>
             </div>
           </div>
 

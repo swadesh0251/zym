@@ -54,35 +54,35 @@ export const ClassBookingModal: React.FC<ClassBookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-md bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl overflow-hidden text-neutral-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl text-neutral-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-neutral-800 bg-[#121620]">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-5 border-b border-neutral-800 bg-[#121620]">
           <div>
             <div className="text-[10px] font-mono uppercase tracking-wider text-[#ccff00]">
               Class Reservation
             </div>
-            <h3 className="font-display text-lg font-bold text-white">
+            <h3 className="font-display text-base sm:text-lg font-bold text-white">
               {confirmedBooking ? 'Spot Confirmed' : 'Reserve Training Spot'}
             </h3>
           </div>
           <button
             onClick={handleDone}
-            className="p-1.5 text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
             aria-label="Close booking modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {!confirmedBooking ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Session Snapshot */}
               <div className="p-3.5 bg-neutral-900/80 rounded-lg border border-neutral-800 text-xs space-y-1.5">
                 <div className="font-display text-sm font-bold text-white">{session.title}</div>
-                <div className="flex items-center gap-3 text-neutral-400 font-mono text-[11px]">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-neutral-400 font-mono text-[11px]">
                   <span className="flex items-center gap-1">
                     <Clock className="w-3 h-3 text-[#ccff00]" />
                     {session.day} at {session.startTime} ({session.durationMinutes}m)
@@ -114,7 +114,7 @@ export const ClassBookingModal: React.FC<ClassBookingModalProps> = ({
                   placeholder="Your full name"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
-                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                 />
               </div>
 
@@ -128,14 +128,14 @@ export const ClassBookingModal: React.FC<ClassBookingModalProps> = ({
                   placeholder="you@domain.com"
                   value={userEmail}
                   onChange={(e) => setUserEmail(e.target.value)}
-                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                 />
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 text-xs font-bold text-black bg-[#ccff00] hover:bg-[#b8e600] rounded-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                  className="w-full py-3.5 px-4 min-h-[46px] text-xs font-bold text-black bg-[#ccff00] hover:bg-[#b8e600] active:scale-[0.99] rounded-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
                 >
                   <span>Confirm Reservation</span>
                   <ArrowRight className="w-4 h-4" />

@@ -1,0 +1,65 @@
+name: Build & Verify CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Install, Test & Build Production Bundle
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Project Dependencies
+        run: |
+          echo "Installing dependencies with npm ci / install..."
+          npm ci || npm install --prefer-offline --no-audit
+
+      - name: Run Code Linting & Typecheck
+        run: |
+          echo "Validating TypeScript types and syntax..."
+          npm run lint
+
+      - name: Build Production Website Bundle
+        run: |
+          echo "Compiling Vite production build..."
+          npm run build
+
+      - name: Verify Build Artifacts
+        run: |
+          echo "Verifying production build output directory..."
+          if [ ! -d "dist" ] || [ ! -f "dist/index.html" ]; then
+            echo "::error::Build verification failed! dist/index.html not generated."
+            exit 1
+          fi
+          echo "Build verification passed. Output size:"
+          du -sh dist/
+
+      - name: Archive Production Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: kinetix-production-dist
+          path: dist/
+          retention-days: 30
+          if-no-files-found: error

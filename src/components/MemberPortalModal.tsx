@@ -49,33 +49,33 @@ export const MemberPortalModal: React.FC<MemberPortalModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-2xl bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl overflow-hidden text-neutral-200 max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-2xl bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl overflow-hidden text-neutral-200 max-h-[92vh] flex flex-col">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-neutral-800 bg-[#121620] shrink-0">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-6 border-b border-neutral-800 bg-[#121620] shrink-0">
           <div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-[#ccff00]">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#ccff00]">
               Athlete Management Portal
             </div>
-            <h3 className="font-display text-xl font-bold text-white">
+            <h3 className="font-display text-lg sm:text-xl font-bold text-white">
               Member Console
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
             aria-label="Close portal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Portal Tabs */}
-        <div className="flex items-center gap-1 p-2 bg-[#10141d] border-b border-neutral-800 shrink-0 overflow-x-auto">
+        {/* Portal Tabs - horizontally scrollable on mobile */}
+        <div className="flex items-center gap-1.5 p-2 bg-[#10141d] border-b border-neutral-800 shrink-0 overflow-x-auto scrollbar-none">
           <button
             onClick={() => setActiveTab('pass')}
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-2 min-h-[40px] text-xs font-semibold rounded-md transition-colors whitespace-nowrap cursor-pointer ${
               activeTab === 'pass'
                 ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
                 : 'text-neutral-400 hover:text-white'
@@ -86,7 +86,7 @@ export const MemberPortalModal: React.FC<MemberPortalModalProps> = ({
 
           <button
             onClick={() => setActiveTab('bookings')}
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 sm:px-3.5 py-2 min-h-[40px] text-xs font-semibold rounded-md transition-colors whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'bookings'
                 ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
                 : 'text-neutral-400 hover:text-white'
@@ -102,7 +102,7 @@ export const MemberPortalModal: React.FC<MemberPortalModalProps> = ({
 
           <button
             onClick={() => setActiveTab('prs')}
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 sm:px-3.5 py-2 min-h-[40px] text-xs font-semibold rounded-md transition-colors whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'prs'
                 ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
                 : 'text-neutral-400 hover:text-white'
@@ -114,7 +114,7 @@ export const MemberPortalModal: React.FC<MemberPortalModalProps> = ({
 
           <button
             onClick={() => setActiveTab('occupancy')}
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-2 min-h-[40px] text-xs font-semibold rounded-md transition-colors whitespace-nowrap cursor-pointer ${
               activeTab === 'occupancy'
                 ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
                 : 'text-neutral-400 hover:text-white'
@@ -125,43 +125,43 @@ export const MemberPortalModal: React.FC<MemberPortalModalProps> = ({
         </div>
 
         {/* Tab Content Body (Scrollable) */}
-        <div className="p-6 overflow-y-auto space-y-6 flex-1">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-6 flex-1">
           
           {/* TAB 1: PASS */}
           {activeTab === 'pass' && (
             <div className="space-y-6">
               {/* Digital Pass Card */}
-              <div className="bg-gradient-to-br from-[#161a25] to-[#0c0e14] border-2 border-neutral-700 rounded-xl p-6 relative overflow-hidden shadow-xl">
+              <div className="bg-gradient-to-br from-[#161a25] to-[#0c0e14] border-2 border-neutral-700 rounded-xl p-5 sm:p-6 relative overflow-hidden shadow-xl">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-display font-extrabold text-xl text-white tracking-wider">KINETIX</span>
+                      <span className="font-display font-extrabold text-lg sm:text-xl text-white tracking-wider">KINETIX</span>
                       <span className="w-2 h-2 rounded-full bg-[#ccff00] shadow-[0_0_10px_rgba(204,255,0,0.8)]" />
                     </div>
                     <div className="text-xs font-mono text-[#ccff00] mt-0.5">CLUB ALL-ACCESS TIER</div>
                   </div>
 
                   <div className="text-right">
-                    <span className="inline-flex items-center gap-1 text-[11px] text-emerald-400 font-mono bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/80">
+                    <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] text-emerald-400 font-mono bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/80">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                       Active 24/7 Access
                     </span>
                   </div>
                 </div>
 
-                <div className="mt-8 flex items-center justify-between">
+                <div className="mt-6 sm:mt-8 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-4">
                   <div>
-                    <div className="text-[11px] text-neutral-400 uppercase font-mono tracking-wider">Member Name</div>
-                    <div className="text-lg font-bold text-white">Alexander Vance</div>
+                    <div className="text-[10px] sm:text-[11px] text-neutral-400 uppercase font-mono tracking-wider">Member Name</div>
+                    <div className="text-base sm:text-lg font-bold text-white">Alexander Vance</div>
                     <div className="text-xs text-neutral-400 font-mono mt-0.5">ID: KTX-882914-AU</div>
                   </div>
 
-                  <div className="bg-white p-2 rounded-lg shadow-inner">
-                    <QrCode className="w-16 h-16 text-black" />
+                  <div className="bg-white p-2 rounded-lg shadow-inner self-center xs:self-auto">
+                    <QrCode className="w-14 h-14 sm:w-16 sm:h-16 text-black" />
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs font-mono text-neutral-400">
+                <div className="mt-6 pt-4 border-t border-neutral-800/80 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 text-xs font-mono text-neutral-400">
                   <span>Turnstile Pass · 28,000 sq ft Access</span>
                   <span className="text-[#ccff00]">4 Guest Passes Available</span>
                 </div>

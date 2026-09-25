@@ -57,22 +57,22 @@ export const TrialPassModal: React.FC<TrialPassModalProps> = ({ isOpen, onClose,
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-lg bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl overflow-hidden text-neutral-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-lg max-h-[92vh] overflow-y-auto bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl text-neutral-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-neutral-800 bg-[#121620]">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-6 border-b border-neutral-800 bg-[#121620]">
           <div>
             <div className="text-[11px] font-mono uppercase tracking-wider text-[#ccff00]">
               Complimentary Access
             </div>
-            <h3 className="font-display text-xl font-bold text-white">
+            <h3 className="font-display text-lg sm:text-xl font-bold text-white">
               1-Day All-Access Athlete Pass
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -80,7 +80,7 @@ export const TrialPassModal: React.FC<TrialPassModalProps> = ({ isOpen, onClose,
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {!generatedPass ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <p className="text-xs text-neutral-400">
@@ -103,7 +103,7 @@ export const TrialPassModal: React.FC<TrialPassModalProps> = ({ isOpen, onClose,
                   placeholder="e.g. Alex Morgan"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                 />
               </div>
 
@@ -118,7 +118,7 @@ export const TrialPassModal: React.FC<TrialPassModalProps> = ({ isOpen, onClose,
                     placeholder="alex@domain.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                    className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                   />
                 </div>
 
@@ -132,7 +132,7 @@ export const TrialPassModal: React.FC<TrialPassModalProps> = ({ isOpen, onClose,
                     placeholder="(512) 000-0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                    className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                   />
                 </div>
               </div>
@@ -147,7 +147,7 @@ export const TrialPassModal: React.FC<TrialPassModalProps> = ({ isOpen, onClose,
                     required
                     value={visitDate}
                     onChange={(e) => setVisitDate(e.target.value)}
-                    className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                    className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                   />
                 </div>
 
@@ -158,7 +158,7 @@ export const TrialPassModal: React.FC<TrialPassModalProps> = ({ isOpen, onClose,
                   <select
                     value={fitnessGoal}
                     onChange={(e) => setFitnessGoal(e.target.value)}
-                    className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                    className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                   >
                     <option>Heavy Barbell & Strength</option>
                     <option>Hyrox & Turf Conditioning</option>
@@ -172,7 +172,7 @@ export const TrialPassModal: React.FC<TrialPassModalProps> = ({ isOpen, onClose,
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 text-xs font-bold text-black bg-[#ccff00] hover:bg-[#b8e600] rounded-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                  className="w-full py-3.5 px-4 min-h-[46px] text-xs font-bold text-black bg-[#ccff00] hover:bg-[#b8e600] active:scale-[0.99] rounded-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
                 >
                   <span>Generate Free Day Pass</span>
                   <ArrowRight className="w-4 h-4" />

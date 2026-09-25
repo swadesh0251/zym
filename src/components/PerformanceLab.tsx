@@ -153,48 +153,50 @@ Calculated at Kinetix Performance Lab`;
           </p>
         </div>
 
-        {/* Tab Selector */}
-        <div className="mt-8 flex flex-wrap gap-2 p-1.5 bg-[#12151d] rounded-lg border border-neutral-800 w-full sm:w-auto inline-flex">
-          <button
-            onClick={() => setActiveTab('1rm')}
-            className={`flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-all cursor-pointer ${
-              activeTab === '1rm'
-                ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
-                : 'text-neutral-400 hover:text-white'
-            }`}
-          >
-            <Dumbbell className="w-4 h-4 text-[#ccff00]" />
-            <span>1RM & Strength Zones</span>
-          </button>
+        {/* Tab Selector - scrollable on mobile */}
+        <div className="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto scrollbar-none pb-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 bg-[#12151d] rounded-lg border border-neutral-800 min-w-max">
+            <button
+              onClick={() => setActiveTab('1rm')}
+              className={`flex items-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-2 min-h-[42px] text-xs sm:text-sm font-semibold rounded-md transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === '1rm'
+                  ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              <Dumbbell className="w-4 h-4 text-[#ccff00]" />
+              <span>1RM & Strength Zones</span>
+            </button>
 
-          <button
-            onClick={() => setActiveTab('macros')}
-            className={`flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-all cursor-pointer ${
-              activeTab === 'macros'
-                ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
-                : 'text-neutral-400 hover:text-white'
-            }`}
-          >
-            <Flame className="w-4 h-4 text-amber-400" />
-            <span>Macro Energy Blueprint</span>
-          </button>
+            <button
+              onClick={() => setActiveTab('macros')}
+              className={`flex items-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-2 min-h-[42px] text-xs sm:text-sm font-semibold rounded-md transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === 'macros'
+                  ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              <Flame className="w-4 h-4 text-amber-400" />
+              <span>Macro Energy Blueprint</span>
+            </button>
 
-          <button
-            onClick={() => setActiveTab('split')}
-            className={`flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-all cursor-pointer ${
-              activeTab === 'split'
-                ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
-                : 'text-neutral-400 hover:text-white'
-            }`}
-          >
-            <Calculator className="w-4 h-4 text-emerald-400" />
-            <span>Workout Split Generator</span>
-          </button>
+            <button
+              onClick={() => setActiveTab('split')}
+              className={`flex items-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-2 min-h-[42px] text-xs sm:text-sm font-semibold rounded-md transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === 'split'
+                  ? 'bg-neutral-800 text-white shadow-sm border border-neutral-700'
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              <Calculator className="w-4 h-4 text-emerald-400" />
+              <span>Workout Split Generator</span>
+            </button>
+          </div>
         </div>
 
         {/* Tab 1: 1RM Calculator */}
         {activeTab === '1rm' && (
-          <div className="mt-8 bg-[#10131a] rounded-xl border border-neutral-800 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="mt-6 sm:mt-8 bg-[#10131a] rounded-xl border border-neutral-800 p-5 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
             
             {/* Form Controls (5 cols) */}
             <div className="lg:col-span-5 space-y-5">
@@ -207,7 +209,7 @@ Calculated at Kinetix Performance Lab`;
                     <button
                       key={l}
                       onClick={() => setLift(l)}
-                      className={`px-3 py-2 text-xs font-semibold rounded border transition-colors cursor-pointer text-left ${
+                      className={`px-3 py-2.5 min-h-[44px] text-xs font-semibold rounded border transition-colors cursor-pointer text-left ${
                         lift === l
                           ? 'bg-[#ccff00] text-black border-[#ccff00] font-bold'
                           : 'bg-neutral-900 text-neutral-300 border-neutral-800 hover:border-neutral-700'

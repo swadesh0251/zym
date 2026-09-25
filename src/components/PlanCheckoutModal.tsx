@@ -39,29 +39,29 @@ export const PlanCheckoutModal: React.FC<PlanCheckoutModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-lg bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl overflow-hidden text-neutral-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-lg max-h-[92vh] overflow-y-auto bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl text-neutral-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-neutral-800 bg-[#121620]">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-5 border-b border-neutral-800 bg-[#121620]">
           <div>
             <div className="text-[10px] font-mono uppercase tracking-wider text-[#ccff00]">
               Athlete Onboarding
             </div>
-            <h3 className="font-display text-lg font-bold text-white">
+            <h3 className="font-display text-base sm:text-lg font-bold text-white">
               {isCompleted ? 'Membership Activated' : `Join ${plan.name}`}
             </h3>
           </div>
           <button
             onClick={handleFinish}
-            className="p-1.5 text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {!isCompleted ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Plan summary badge */}
@@ -92,7 +92,7 @@ export const PlanCheckoutModal: React.FC<PlanCheckoutModalProps> = ({
                   placeholder="Full Legal Name"
                   value={athleteName}
                   onChange={(e) => setAthleteName(e.target.value)}
-                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                 />
               </div>
 
@@ -106,7 +106,7 @@ export const PlanCheckoutModal: React.FC<PlanCheckoutModalProps> = ({
                   placeholder="name@domain.com"
                   value={athleteEmail}
                   onChange={(e) => setAthleteEmail(e.target.value)}
-                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                 />
               </div>
 
@@ -125,7 +125,7 @@ export const PlanCheckoutModal: React.FC<PlanCheckoutModalProps> = ({
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 text-xs font-bold text-black bg-[#ccff00] hover:bg-[#b8e600] rounded-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                  className="w-full py-3.5 px-4 min-h-[46px] text-xs font-bold text-black bg-[#ccff00] hover:bg-[#b8e600] active:scale-[0.99] rounded-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
                 >
                   <Lock className="w-3.5 h-3.5 text-black" />
                   <span>Activate Membership Now</span>

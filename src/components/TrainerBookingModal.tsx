@@ -33,29 +33,29 @@ export const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl overflow-hidden text-neutral-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-lg max-h-[92vh] overflow-y-auto bg-[#0e1118] border border-neutral-800 rounded-xl shadow-2xl text-neutral-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-neutral-800 bg-[#121620]">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-5 border-b border-neutral-800 bg-[#121620]">
           <div>
             <div className="text-[10px] font-mono uppercase tracking-wider text-[#ccff00]">
               1-on-1 Performance Consultation
             </div>
-            <h3 className="font-display text-lg font-bold text-white">
+            <h3 className="font-display text-base sm:text-lg font-bold text-white">
               Consultation with {trainer.name}
             </h3>
           </div>
           <button
             onClick={handleClose}
-            className="p-1.5 text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               
@@ -65,7 +65,7 @@ export const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({
                   src={trainer.image}
                   alt={trainer.name}
                   referrerPolicy="no-referrer"
-                  className="w-12 h-12 rounded-full object-cover object-top border border-neutral-700"
+                  className="w-12 h-12 rounded-full object-cover object-top border border-neutral-700 shrink-0"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">{trainer.name}</div>
@@ -84,7 +84,7 @@ export const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({
                   placeholder="Your full name"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
-                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                 />
               </div>
 
@@ -98,7 +98,7 @@ export const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({
                   placeholder="you@domain.com"
                   value={userEmail}
                   onChange={(e) => setUserEmail(e.target.value)}
-                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                 />
               </div>
 
@@ -107,13 +107,13 @@ export const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({
                 <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1.5">
                   Select Preferred Time Slot
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 xs:grid-cols-3 gap-2">
                   {['07:30 AM', '09:00 AM', '11:30 AM', '02:00 PM', '04:30 PM', '06:00 PM'].map((slot) => (
                     <button
                       type="button"
                       key={slot}
                       onClick={() => setSelectedSlot(slot)}
-                      className={`py-2 px-2 text-xs font-mono rounded border cursor-pointer ${
+                      className={`py-2.5 px-2 min-h-[42px] text-xs font-mono rounded border cursor-pointer ${
                         selectedSlot === slot
                           ? 'bg-[#ccff00] text-black border-[#ccff00] font-bold'
                           : 'bg-neutral-900 text-neutral-300 border-neutral-800 hover:border-neutral-700'
@@ -132,7 +132,7 @@ export const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({
                 <select
                   value={focusArea}
                   onChange={(e) => setFocusArea(e.target.value)}
-                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3 py-2 text-sm text-white focus:border-[#ccff00] outline-none"
+                  className="w-full bg-neutral-900 border border-neutral-800 rounded px-3.5 py-2.5 text-base sm:text-sm text-white focus:border-[#ccff00] outline-none"
                 >
                   <option>Olympic Lifting Kinematics & Bar Path</option>
                   <option>Hyrox Lactate Pacing & Sled Mechanics</option>
@@ -145,7 +145,7 @@ export const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 text-xs font-bold text-black bg-[#ccff00] hover:bg-[#b8e600] rounded-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                  className="w-full py-3.5 px-4 min-h-[46px] text-xs font-bold text-black bg-[#ccff00] hover:bg-[#b8e600] active:scale-[0.99] rounded-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
                 >
                   <span>Request Assessment Session</span>
                   <ArrowRight className="w-4 h-4" />
